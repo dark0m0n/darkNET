@@ -11,4 +11,6 @@ class Command(BaseCommand):
 
 def my_function():
     for account in Account.objects.all():
-        print(account)
+        print(account.nick)
+        account.password = '5'
+        account.save()

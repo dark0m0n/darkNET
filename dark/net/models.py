@@ -19,7 +19,7 @@ class AccountEmail(models.Model):
 
 
 class Account(models.Model):
-    nick = models.CharField(max_length=255)
+    nick = models.CharField(max_length=255, unique=True)
     password = models.CharField(max_length=66)
     email = models.ForeignKey(AccountEmail, on_delete=models.CASCADE)
 
