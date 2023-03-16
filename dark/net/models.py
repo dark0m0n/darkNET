@@ -22,3 +22,6 @@ class Account(models.Model):
     nick = models.CharField(max_length=255)
     password = models.CharField(max_length=66)
     email = models.ForeignKey(AccountEmail, on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return self.nick
