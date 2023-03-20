@@ -22,6 +22,9 @@ class Account(models.Model):
     nick = models.CharField(max_length=255, unique=True)
     password = models.CharField(max_length=66)
     email = models.ForeignKey(AccountEmail, on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now=True)
+    like = models.IntegerField(default=0, blank=True, null=True)
+    dislike = models.IntegerField(default=0, blank=True, null=True)
 
     def __str__(self) -> str:
         return self.nick

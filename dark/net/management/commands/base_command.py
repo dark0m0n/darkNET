@@ -1,5 +1,6 @@
 from django.core.management.base import BaseCommand
 from net.models import Account, AccountEmail
+from django.db.models import Q, F
 
 
 class Command(BaseCommand):
@@ -10,7 +11,4 @@ class Command(BaseCommand):
 
 
 def my_function():
-    for account in Account.objects.all():
-        print(account.nick)
-        account.password = '5'
-        account.save()
+    print(Account.objects.filter().order_by(-F('like'))) # ;)

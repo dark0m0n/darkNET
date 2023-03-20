@@ -10,7 +10,7 @@ class SettingAdmin(admin.ModelAdmin):
 
 @admin.register(Account)
 class SettingAccount(admin.ModelAdmin):
-    list_display = ('nick', 'password', 'email')
+    list_display = ('nick', 'password', 'email', 'date')
     search_fields = ('nick',)
 
 
