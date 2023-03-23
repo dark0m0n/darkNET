@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from net.models import Account, AccountEmail
+from net.models import Account, AccountEmail, Game
 from django.db.models import Q, F
 
 
@@ -11,4 +11,5 @@ class Command(BaseCommand):
 
 
 def my_function():
-    print(Account.objects.filter().order_by(-F('like'))) # ;)
+    print(Game.objects.filter(like__gte=F('dislike')))
+    

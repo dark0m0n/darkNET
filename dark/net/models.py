@@ -23,8 +23,26 @@ class Account(models.Model):
     password = models.CharField(max_length=66)
     email = models.ForeignKey(AccountEmail, on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now=True)
-    like = models.IntegerField(default=0, blank=True, null=True)
-    dislike = models.IntegerField(default=0, blank=True, null=True)
+    like = models.IntegerField(default=0)
+    dislike = models.IntegerField(default=0)
+    games = models.ManyToManyField('Game')
 
     def __str__(self) -> str:
         return self.nick
+
+
+class Game(models.Model):
+    name = models.CharField(max_length=100)
+    status = models.BooleanField()
+    price = models.FloatField()
+    like = models.PositiveIntegerField()
+    dislike = models.PositiveIntegerField()
+    changes = models.PositiveIntegerField(default=0)
+
+    def __str__(self) -> str:
+        return self.name
+
+    def save(self, *args, **kwargs):
+        self.changes += 1
+
+        return super().save(*args, **kwargs)      
